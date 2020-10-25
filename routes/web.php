@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('ajax-crud', 'AjaxCrudController');
+
+Route::post('ajax-crud/update', 'AjaxCrudController@update')->name('ajax-crud.update');
+
+Route::get('ajax-crud/destroy/{id}', 'AjaxCrudController@destroy');

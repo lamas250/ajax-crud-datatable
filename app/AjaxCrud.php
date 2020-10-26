@@ -14,4 +14,9 @@ class AjaxCrud extends Model
     {
         return $this->hasOne(Address::class, 'user_id');
     }
+
+    public function job()
+    {
+        return $this->hasOne(Job::class,'user_id');
+    }
 }

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ajax Project</title>
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> --}}
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>  
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" />
-    {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
-   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
@@ -22,14 +22,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{route('ajax-crud.index')}}">User <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link @if(request()->is('ajax-crud')) active @endif"  href="{{route('ajax-crud.index')}}">User</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('address.index')}}">Address</a>
+                <a class="nav-link @if(request()->is('address')) active @endif" href="{{route('address.index')}}">Address</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Plans</a>
+                <a class="nav-link @if(request()->is('jobs')) active @endif" href="{{route('jobs.index')}}">Jobs</a>
             </li>
             </ul>
         </div>

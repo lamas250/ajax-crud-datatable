@@ -25,10 +25,10 @@
 <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
      <div class="modal-content">
-      <div class="modal-header">
-             <button type="button" class="close" data-dismiss="modal">&times;</button>
-             <h4 class="modal-title">Add New Record</h4>
-           </div>
+        <div class="modal-header">
+            <h4 class="modal-title">Add New Record</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
            <div class="modal-body">
             <span id="form_result"></span>
             <form method="post" id="sample_form" class="form-horizontal" enctype="multipart/form-data">

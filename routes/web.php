@@ -29,3 +29,10 @@ Route::get('ajax-crud/destroy/{id}', 'AjaxCrudController@destroy');
 Route::resource('address', 'AddressController');
 Route::post('address/update', 'AddressController@update')->name('address.update');
 Route::get('address/destroy/{id}', 'AddressController@destroy');
+
+/**
+ * Jobs
+ */
+Route::resource('jobs','JobController');
+Route::post('job/update', 'JobController@update')->name('jobs.update');
+Route::get('job/destroy/{id}', 'JobController@destroy')->name('jobs.destroy');

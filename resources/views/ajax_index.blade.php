@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">    
-    <br />
     <h3 align="center">Laravel 7 Ajax Crud Tutorial - Delete or Remove Data</h3>
     <br />
     <div align="right">

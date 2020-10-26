@@ -12,9 +12,9 @@
         <table class="table table-bordered table-striped" id="address_table">
             <thead>
                 <tr>
-                    <th width="10%">Nome</th>
-                    <th width="35%">Cidade</th>
-                    <th width="35%">CEP</th>
+                    <th width="20%">Nome</th>
+                    <th width="30%">Cidade</th>
+                    <th width="30%">CEP</th>
                     <th width="30%">Ações</th>
                 </tr>
             </thead>
@@ -101,7 +101,14 @@ $('#address_table').DataTable({
         url: "{{ route('address.index') }}",
     },
     columns:[
-        { data: 'first_name', name: 'first_name', orderable: false },
+        // { data: 'first_name', name: 'first_name', orderable: false },
+        {
+            render: function(data, type, row, meta)
+            {
+                return row.first_name+' '+row.last_name;
+            },
+ 
+    },
         { data: 'address.city', name: 'address.city',"defaultContent": "---" },
         { data: 'address.zipcode', name: 'address.zipcode',"defaultContent": "---"},
         { data: 'action', name: 'action', orderable: false}

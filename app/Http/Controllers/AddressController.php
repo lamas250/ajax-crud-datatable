@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\AjaxCrud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AddressController extends Controller
 {
@@ -16,7 +17,8 @@ class AddressController extends Controller
     public function index()
     {
         $users = AjaxCrud::with(['address'])->get();
-        
+        $usersWithoutAddress = $users->where('address',null);
+
         if(request()->ajax())
         {
             return datatables()->of($users)
@@ -29,7 +31,7 @@ class AddressController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('address');
+        return view('address',compact('usersWithoutAddress'));
     }
 
     /**
@@ -50,7 +52,28 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array(
+            'zipcode'    =>  'required',
+            'city'     =>  'required',
+        );
+
+        $error = Validator::make($request->all(), $rules);
+
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+
+        $form_data = array(
+            'user_id'        =>  $request->user_id,
+            'city'         =>  $request->city,
+            'zipcode'             =>  $request->zipcode
+        );
+
+        Address::create($form_data);
+
+        return response()->json(['success' => 'Endereço registrado.']);
     }
 
     /**
@@ -61,7 +84,7 @@ class AddressController extends Controller
      */
     public function show($id)
     {
-        //
+// 
     }
 
     /**
@@ -72,7 +95,13 @@ class AddressController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(request()->ajax())
+        {
+            // dd($id);
+            $data = AjaxCrud::where('id',$id)->with('address')->first();
+            // dd($data);
+            return response()->json(['data' => $data]);
+        }
     }
 
     /**
@@ -82,9 +111,17 @@ class AddressController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $form_data = array(
+            'user_id'       =>   $request->user_id,
+            'city'        =>   $request->city,
+            'zipcode'            =>   $request->zipcode
+        );
+        // dd($form_data);
+        Address::where('user_id',$request->user_id)->update($form_data);
+      
+        return response()->json(['success' => 'Data is successfully updated']);
     }
 
     /**

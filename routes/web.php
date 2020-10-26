@@ -17,11 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+/**
+ * Users
+ */
 Route::resource('ajax-crud', 'AjaxCrudController');
-
 Route::post('ajax-crud/update', 'AjaxCrudController@update')->name('ajax-crud.update');
-
 Route::get('ajax-crud/destroy/{id}', 'AjaxCrudController@destroy');
-
+/**
+ * Address
+ */
+Route::get('address/destroy/{id}', 'AjaxCrudController@destroy');
 Route::resource('address', 'AddressController');
+Route::post('address/update', 'AddressController@update')->name('address.update');

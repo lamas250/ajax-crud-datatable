@@ -26,6 +26,6 @@ Route::get('ajax-crud/destroy/{id}', 'AjaxCrudController@destroy');
 /**
  * Address
  */
-Route::get('address/destroy/{id}', 'AjaxCrudController@destroy');
 Route::resource('address', 'AddressController');
 Route::post('address/update', 'AddressController@update')->name('address.update');
+Route::get('address/destroy/{id}', 'AddressController@destroy');

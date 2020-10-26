@@ -132,6 +132,7 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Address::where('user_id',$id)->first();
+        $data->delete();
     }
 }
